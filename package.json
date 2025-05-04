@@ -1,0 +1,28 @@
+{
+  "name": "destiny-2-heresy-chess-svelte",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "@tsconfig/svelte": "^5.0.4",
+    "svelte": "^5.23.1",
+    "svelte-check": "^4.1.5",
+    "typescript": "~5.7.2",
+    "vite": "^6.3.1",
+    "vite-plugin-svg-sprite": "^0.6.2"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.5",
+    "@tanstack/svelte-virtual": "^3.13.6",
+    "@tanstack/virtual-core": "^3.13.6",
+    "tailwindcss": "^4.1.5",
+    "virtua": "^0.41.0"
+  }
+}

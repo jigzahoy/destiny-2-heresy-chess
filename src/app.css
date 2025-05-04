@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+:root {
+  --scale-multiplier: 1;
+  --table-size: calc(var(--scale-multiplier, 1) * 512px);
+}
+
+.chess-cell svg {
+  width: 100%;
+  height: 100%;
+}
