@@ -14,10 +14,13 @@
   });
 </script>
 
-<div style="--grid-size: repeat({GRID_SIZE}, 1fr);">
+<div
+  class="flex w-full h-full place-content-center"
+  style="--grid-size: repeat({GRID_SIZE}, 1fr);"
+>
   {#if exportedData}
     <div
-      class="grid grid-flow-row grid-cols-(--grid-size) grid-rows-(--grid-size) w-fit"
+      class="grid grid-flow-row grid-cols-(--grid-size) grid-rows-(--grid-size) w-fit m-auto"
     >
       {#each { length: GRID_SIZE } as row, i (`board-row-${i}`)}
         {#each { length: GRID_SIZE } as board, j (`board-${i}-${j}`)}
