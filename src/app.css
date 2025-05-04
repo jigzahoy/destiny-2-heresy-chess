@@ -2,7 +2,7 @@
 
 :root {
   --scale-multiplier: 1;
-  --table-size: calc(var(--scale-multiplier, 1) * 512px);
+  --chessboard-size: calc(var(--scale-multiplier, 1) * 512px);
 }
 
 .chess-cell svg {

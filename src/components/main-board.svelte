@@ -1,6 +1,5 @@
 <script lang="ts">
   import ChessTableCanvas from "./chess-table-canvas.svelte";
-  import ChessIconsGlobals from "./chess-icons-globals.svelte";
   import { onMount } from "svelte";
 
   // import data from "./../data/exported-data.json";
@@ -14,15 +13,12 @@
   });
 
   const GRID_SIZE = 64;
-  const ESTIMATED_SIZE = 512;
-  const OVERSCAN = 8;
 </script>
 
-<main class="w-full h-full" style="--grid-size: repeat({GRID_SIZE}, 1fr);">
-  <ChessIconsGlobals />
+<div style="--grid-size: repeat({GRID_SIZE}, 1fr);">
   {#if exportedData}
     <div
-      class="grid grid-flow-row grid-cols-(--grid-size) grid-rows-(--grid-size)"
+      class="grid grid-flow-row grid-cols-(--grid-size) grid-rows-(--grid-size) w-fit"
     >
       {#each { length: GRID_SIZE } as row, i (`board-row-${i}`)}
         {#each { length: GRID_SIZE } as board, j (`board-${i}-${j}`)}
@@ -31,4 +27,4 @@
       {/each}
     </div>
   {/if}
-</main>
+</div>
