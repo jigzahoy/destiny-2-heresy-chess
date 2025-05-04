@@ -13,7 +13,7 @@
   import QueenBlack from "../assets/icons/Qb.svg";
   import KingBlack from "../assets/icons/Kb.svg";
 
-  const ChessPieces = {
+  const ChessPieces: { [key: string]: string } = {
     Pw: PawnWhite,
     Rw: RookWhite,
     Nw: KnightWhite,

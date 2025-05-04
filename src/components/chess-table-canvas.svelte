@@ -2,6 +2,7 @@
   import { onDestroy, onMount } from "svelte";
   import { fenToSymbols } from "../lib/fen-to-symbols";
   import { showEndgameStore } from "../lib/store";
+  import { CANVAS_SIZE } from "../constants";
 
   interface ChessTableProps {
     chessboard: Chessboard;
@@ -14,7 +15,6 @@
   let context: CanvasRenderingContext2D | undefined | null;
   let squareSize: number | undefined;
 
-  const CANVAS_SIZE = 512;
   const symbols = fenToSymbols(fen);
   const middleSymbol = symbols[3][3];
 

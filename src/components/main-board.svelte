@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { GRID_SIZE } from "../constants";
   import ChessTableCanvas from "./chess-table-canvas.svelte";
   import { onMount } from "svelte";
 
@@ -11,8 +12,6 @@
     const dataJson = await import("./../data/exported-data.json");
     exportedData = dataJson.default as Chessboard[][];
   });
-
-  const GRID_SIZE = 64;
 </script>
 
 <div style="--grid-size: repeat({GRID_SIZE}, 1fr);">
