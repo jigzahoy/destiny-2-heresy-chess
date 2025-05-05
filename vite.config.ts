@@ -4,5 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/destiny-2-heresy-chess/",
   plugins: [svelte(), tailwindcss()],
 });
