@@ -26,3 +26,8 @@ interface Chessboard {
   symbols?: ChessRow[];
   communityVerified?: number;
 }
+
+
+interface ChessPiecesType extends Record<NonNullable<ChessPiece>,string> {}
+
+interface OffscreenIcons extends Record<NonNullable<ChessPiece>,CanvasImageSource> {}

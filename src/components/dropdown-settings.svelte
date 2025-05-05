@@ -1,72 +1,110 @@
 <script lang="ts">
-  import { showEndgameStore, showQRStore } from "../lib/store";
+  import { tick } from "svelte";
+  import { chessState } from "../lib/store.svelte";
 
   const root = document.querySelector(":root");
 
-  const onZoomChange = (event: Event) => {
-    const target = event?.target as HTMLInputElement;
-    const scaleMultiplier = parseInt(target?.value) / 100;
+  let zoomValue = $state(100);
+  let hasQrModeViewedOnce = false;
+
+  $effect(() => {
+    const scaleMultiplier = zoomValue / 100;
     // @ts-expect-error: Change root style
     root.style.setProperty("--scale-multiplier", scaleMultiplier);
-  };
+  });
 
-  const onEndgameChange = (event: Event) => {
-    const target = event?.target as HTMLInputElement;
-    const value = target?.checked;
+  $effect(() => {
+    if (chessState.boardState === "qr_board") {
+      if (!hasQrModeViewedOnce) {
+        zoomValue = 8;
 
-    showEndgameStore.set(value);
-  };
+        tick().then(() => {
+          const scrollXMid =
+            (document.body.scrollWidth - document.body.clientWidth) / 2;
+          const scrollYMid =
+            (document.body.scrollHeight - document.body.clientHeight) / 2;
 
-  const onQrChange = (event: Event) => {
-    const target = event?.target as HTMLInputElement;
-    const value = target?.checked;
+          window.scrollTo({
+            top: scrollYMid,
+            left: scrollXMid,
+            behavior: "smooth",
+          });
+        });
+      }
 
-    showQRStore.set(value);
-  };
+      hasQrModeViewedOnce = true;
+    }
+  });
 </script>
 
 <div
-  class="fixed border rounded shadow-sm border-gray-200/80 bg-white/80 top-4 right-4 min-w-xs backdrop-blur-xs"
+  class="fixed z-50 text-white border border-white shadow-sm bg-black/80 top-4 right-4 min-w-xs backdrop-blur-xs"
 >
   <details>
-    <summary class="px-2 py-2 font-medium">Settings</summary>
+    <summary class="px-2 py-2 font-medium tracking-wide uppercase">
+      Settings
+    </summary>
     <div class="px-2 py-2 border-t border-gray-400">
       <label class="flex gap-2">
         <span>Zoom</span>
         <input
-          on:input={onZoomChange}
+          oninput={onZoomChange}
+          bind:value={zoomValue}
           type="range"
           class="w-full"
           name="zoom"
           id="zoom"
-          value="100"
           step="1"
-          min="1"
+          min="2"
           max="100"
         />
       </label>
 
-      <label class="flex gap-2">
-        <input
-          type="checkbox"
-          on:change={onEndgameChange}
-          name="endgame"
-          id="endgame"
-          disabled
-        />
-        <span>Show Endgame puzzle</span>
-      </label>
+      <fieldset class="mt-1">
+        <legend>View Chessboard</legend>
 
-      <label class="flex gap-2">
-        <input
-          type="checkbox"
-          on:change={onQrChange}
-          name="show-qr"
-          id="show-qr"
-          disabled
-        />
-        <span>Show QR Code</span>
-      </label>
+        <label class="flex gap-2">
+          <input
+            type="radio"
+            bind:group={chessState.boardState}
+            name="board"
+            value="sequence_board"
+            checked
+          />
+          <span>Sequence Boards</span>
+        </label>
+
+        <label class="flex gap-2">
+          <input
+            type="radio"
+            bind:group={chessState.boardState}
+            name="board"
+            value="qr_board"
+          />
+          <span>QR Code</span>
+        </label>
+
+        <label class="flex gap-2">
+          <input
+            type="radio"
+            bind:group={chessState.boardState}
+            name="board"
+            value="endgame_puzzle"
+          />
+          <span>Endgame Puzzle</span>
+        </label>
+
+        <label class="flex gap-2">
+          <input
+            type="radio"
+            bind:group={chessState.boardState}
+            name="board"
+            value="endgame_solution"
+            disabled
+          />
+          <span>Endgame Solution</span>
+        </label>
+      </fieldset>
     </div>
   </details>
 </div>

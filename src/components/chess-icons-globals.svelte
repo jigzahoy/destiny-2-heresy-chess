@@ -12,6 +12,7 @@
   import BishopBlack from "../assets/icons/Bb.svg";
   import QueenBlack from "../assets/icons/Qb.svg";
   import KingBlack from "../assets/icons/Kb.svg";
+  import { CANVAS_SIZE } from "../constants";
 
   const ChessPieces: { [key: string]: string } = {
     Pw: PawnWhite,

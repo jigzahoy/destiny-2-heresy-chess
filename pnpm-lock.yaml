@@ -24,6 +24,12 @@ importers:
         specifier: ^0.41.0
         version: 0.41.0(svelte@5.28.2)
     devDependencies:
+      '@svelte-put/dragscroll':
+        specifier: ^4.0.0
+        version: 4.0.0(svelte@5.28.2)
+      '@svelte-put/intersect':
+        specifier: ^4.0.0
+        version: 4.0.0(svelte@5.28.2)
       '@sveltejs/vite-plugin-svelte':
         specifier: ^5.0.3
         version: 5.0.3(svelte@5.28.2)(vite@6.3.4(jiti@2.4.2)(lightningcss@1.29.2))
@@ -319,6 +325,16 @@ packages:
     resolution: {integrity: sha512-ECyOuDeH3C1I8jH2MK1RtBJW+YPMvSfT0a5NN0nHfQYnDSJ6tUiZH3gzwVP5/Kfh/+Tt7tpWVF9LXNTnhTJ3kA==}
     cpu: [x64]
     os: [win32]
+
+  '@svelte-put/dragscroll@4.0.0':
+    resolution: {integrity: sha512-YltAaYO5PlzUICYBkYAV7VhhdP6qrhQhmXvHZ8F608XwcAZe4SRDhpEDREQN6H9LFfKssQNuGnpYwqa9/kpNiA==}
+    peerDependencies:
+      svelte: ^5.1.0
+
+  '@svelte-put/intersect@4.0.0':
+    resolution: {integrity: sha512-NTDqkUSKUlmK4NL1/ecWPRi3GGcv6QOCMyf8ym9dH3KStVOHXD7gozKnCgZgklR+V6G4KdT3ej3GO6YnSZs4og==}
+    peerDependencies:
+      svelte: ^5.1.0
 
   '@sveltejs/acorn-typescript@1.0.5':
     resolution: {integrity: sha512-IwQk4yfwLdibDlrXVE04jTZYlLnwsTT2PIOQQGNLWfjavGifnk1JD1LcZjZaBTRcxZu2FfPfNLOE04DSu9lqtQ==}
@@ -992,6 +1008,14 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.40.1':
     optional: true
+
+  '@svelte-put/dragscroll@4.0.0(svelte@5.28.2)':
+    dependencies:
+      svelte: 5.28.2
+
+  '@svelte-put/intersect@4.0.0(svelte@5.28.2)':
+    dependencies:
+      svelte: 5.28.2
 
   '@sveltejs/acorn-typescript@1.0.5(acorn@8.14.1)':
     dependencies:

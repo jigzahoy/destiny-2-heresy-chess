@@ -2,13 +2,20 @@
 
 :root {
   --scale-multiplier: 1;
-  --chessboard-size: calc(var(--scale-multiplier, 1) * 512px);
+  --chessboard-size: calc(
+    var(--scale-multiplier, 1) * var(--canvas-size, 512px)
+  );
 }
 
 html,
 body {
   width: 100%;
   height: 100%;
+  background-color: var(--color-black);
+}
+
+input[type="radio"] {
+  background-color: transparent;
 }
 
 #app,
@@ -17,7 +24,76 @@ main {
   height: 100%;
 }
 
-.chess-cell svg {
-  width: 100%;
-  height: 100%;
+.chess-table {
+  --border-size: calc(var(--chessboard-size) / 8);
+  --grid-color: var(--color-gray-300);
+  position: relative;
+  container-type: inline-size;
+  container-name: chesstable;
+}
+
+.chess-table.sequence-table {
+  box-shadow: inset 0 0 0 var(--border-size) black;
+}
+
+.chess-table.qr-table:not([data-has-qr="true"])::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: color-mix(in oklab, var(--color-black) 65%, transparent);
+}
+
+@container chesstable (min-width: 192px) {
+  .chess-table.sequence-table:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        var(--grid-color) 0 1px,
+        transparent 1px 100%
+      ),
+      repeating-linear-gradient(
+        90deg,
+        var(--grid-color) 0 1px,
+        transparent 1px 100%
+      );
+    background-size: var(--border-size) var(--border-size);
+    opacity: 0.5;
+  }
+}
+
+.chess-table.endgame-puzzle-table::before {
+  --endgame-grid-size: 0px;
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 var(--endgame-grid-size) var(--grid-color);
+}
+
+@container chesstable (min-width: 128px) {
+  .chess-table.endgame-puzzle-table::before {
+    --endgame-grid-size: 1px;
+  }
+}
+
+@container chesstable (min-width: 256px) {
+  .chess-table.endgame-puzzle-table::before {
+    --endgame-grid-size: 3px;
+  }
+}
+
+.chess-table[data-background="lightGray"] {
+  background-color: var(--color-slate-400);
+}
+
+.chess-table[data-background="darkGray"] {
+  background-color: var(--color-slate-800);
+}
+
+.chess-table[data-background="lightRed"] {
+  background-color: var(--color-red-400);
+}
+
+.chess-table[data-background="darkRed"] {
+  background-color: var(--color-red-800);
 }
