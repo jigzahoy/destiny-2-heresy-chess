@@ -48,7 +48,6 @@
       <label class="flex gap-2">
         <span>Zoom</span>
         <input
-          oninput={onZoomChange}
           bind:value={zoomValue}
           type="range"
           class="w-full"
