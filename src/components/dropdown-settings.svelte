@@ -93,7 +93,7 @@
           <span>Endgame Puzzle</span>
         </label>
 
-        <label class="flex gap-2">
+        <label class="flex gap-2 text-gray-400">
           <input
             type="radio"
             bind:group={chessState.boardState}
@@ -102,8 +102,21 @@
             disabled
           />
           <span>Endgame Solution</span>
+          <span class="text-xs self-center">(WIP)</span>
         </label>
       </fieldset>
+
+      <div
+        class="text-sm mt-4 px-2 text-gray-400 uppercase tracking-wider max-w-[250px]"
+      >
+        Data from <a
+          href="https://tjl.co/queens-gambit-arg/"
+          class="underline"
+          rel="noopener noreferrer"
+        >
+          TJ09
+        </a>, Raid Secrets, and the Destiny 2 Community
+      </div>
     </div>
   </details>
 </div>
